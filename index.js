@@ -3,7 +3,7 @@ let interval = null;
 
 function run_ws() {
     const HOST = "wss://vulcan-websocket-api.herokuapp.com";
-    const URL = `${HOST}/ws`;
+    const URL = `${HOST}/oceny`;
 
     const ws = new WebSocket(URL);
     start_ping(ws);
@@ -69,11 +69,11 @@ function build_grades_table(data) {
         for (let grade of values) {
             let actual_grade = "";
             if (typeof(grade) != "undefined") {
-                try {
-                    actual_grade = grade[1];
-                } catch (error) {
-                    actual_grade = grade; // TIMEOUT
-                }
+                // try {
+                actual_grade = grade[1];
+                // } catch (error) {
+                //     actual_grade = "TIMEOUT"; // TIMEOUT
+                // }
             }
             let cell = row.insertCell();
             let text = document.createTextNode(actual_grade);
