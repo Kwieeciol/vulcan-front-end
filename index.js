@@ -63,20 +63,18 @@ function build_grades_table(data) {
         }
         rows.push(row);
     }
-
+    console.log(rows);
     for (let values of Object.values(rows)) {
         let row = table.insertRow();
         for (let grade of values) {
-            let actual_grade = "";
-            if (typeof(grade) != "undefined") {
-                try {
-                 actual_grade = grade[1];
-                } catch (error) {
-                    actual_grade = "TIMEOUT";
-                }
+            if (grade == null) {
+                grade = "";
+            } else {
+                grade = grade[1];
             }
+
             let cell = row.insertCell();
-            let text = document.createTextNode(actual_grade);
+            let text = document.createTextNode(grade);
             cell.appendChild(text);
         }
     }
