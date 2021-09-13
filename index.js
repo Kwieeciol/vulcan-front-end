@@ -1,11 +1,11 @@
 const PING_TIMEOUT = 3000; // 3 seconds
+let websockets = [];
 let intervals = [];
 
 function run_ws() {
     const URL = "wss://vulcan-websocket-api.herokuapp.com";
     let endpoints = ["/lukasz/oceny", "/lukasz/pieniadze"];
 
-    let websockets = [];
     for (let endpoint of endpoints) {
         let ws = new WebSocket(`${URL}${endpoint}`);
         websockets.push(ws);
