@@ -2,17 +2,8 @@ const PING_TIMEOUT = 3500; // 3.5 seconds
 let interval = null;
 
 function run_ws() {
-    let loc = window.location
-    let URI;
-    if (loc.protocol == "https:") {
-        URI = "wss:"
-    } else {
-        URI = "ws:"
-    }
-    
-    const PORT = 8080;
-    const HOST = "localhost";
-    const URL = `${URI}//${HOST}:${PORT}/ws`;
+    const HOST = "https://vulcan-websocket-api.herokuapp.com/";
+    const URL = `${HOST}/ws`;
 
     const ws = new WebSocket(URL);
     start_ping(ws);
