@@ -69,7 +69,11 @@ function build_grades_table(data) {
         for (let grade of values) {
             let actual_grade = "";
             if (typeof(grade) != "undefined") {
-                actual_grade = grade;
+                try {
+                    actual_grade = grade[1];
+                } catch (error) {
+                    actual_grade = grade; // TIMEOUT
+                }
             }
             let cell = row.insertCell();
             let text = document.createTextNode(actual_grade);
