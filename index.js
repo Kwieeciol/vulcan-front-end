@@ -54,6 +54,13 @@ function process_data(payload) {
     }
 }
 
+function filter_date() {
+    let date = document.getElementById("filter-date").value;
+    for (let ws of websockets) {
+        ws.send(date);
+    }
+}
+
 function build_money_table(data) {
     $("#money-table tr").remove(); // remove all rows from table    
 

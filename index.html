@@ -10,6 +10,13 @@
 <body onload="run_ws()">
     <h1 id="oceny-imie">Oceny Łukasz</h1>
 
+    <div class="filter-table-wrapper">
+        <label for="filter-date">Filter from: </label>
+        <input type="text" name="filter-date" id="filter-date" placeholder="DD/MM/YYYY" pattern="\d{2}\/\d{2}\/\d{2,4}">
+        <button onclick="filter_date()">filter</button>
+    </div>
+
+
     <div class="table-wrapper">
         <table id="grades-table" class="tables" border="thin">
             <thead class="thead-light"></thead>
