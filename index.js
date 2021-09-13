@@ -34,7 +34,7 @@ function setup_websocket(ws) {
             console.log("GOT PONG");
         } else {
             let data = JSON.parse(raw_data);
-            // console.log(data);
+            console.log(data);
             process_data(data);
         }
     }
