@@ -93,10 +93,6 @@ function build_money_table(data) {
         for (let grade of values) {
             if (grade == null) {
                 grade = "";
-            } else if (grade == "TIMEOUT"){
-                grade = "TIMEOUT";
-            } else {
-                grade = grade[1];
             }
 
             let cell = row.insertCell();
@@ -145,10 +141,6 @@ function build_grades_table(data) {
         for (let grade of values) {
             if (grade == null) {
                 grade = "";
-            } else if (grade == "TIMEOUT"){
-                grade = "TIMEOUT";
-            } else {
-                grade = grade[1];
             }
 
             let cell = row.insertCell();
