@@ -103,7 +103,6 @@ function build_money_table(data) {
 }
 
 function build_grades_table(data) {
-    console.log(data);
     $("#grades-table tr").remove(); // remove all rows from table    
 
     let height = 0;
