@@ -2,7 +2,7 @@ const PING_TIMEOUT = 3500; // 3.5 seconds
 let interval = null;
 
 function run_ws() {
-    const HOST = "wss://vulcan-websocket-api.herokuapp.com/";
+    const HOST = "wss://vulcan-websocket-api.herokuapp.com";
     const URL = `${HOST}/ws`;
 
     const ws = new WebSocket(URL);
