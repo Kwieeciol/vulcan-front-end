@@ -3,7 +3,7 @@ let intervals = [];
 
 function run_ws() {
     const URL = "wss://vulcan-websocket-api.herokuapp.com";
-    let endpoints = ["/lukasz/oceny", "/lukasz/pieniadze"]
+    let endpoints = ["/lukasz/oceny", "/lukasz/pieniadze"];
 
     let websockets = [];
     for (let endpoint of endpoints) {
