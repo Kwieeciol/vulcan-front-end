@@ -54,21 +54,24 @@ function build_grades_table(data) {
     }
 
     // Create body
-    let rows = [];
+    let raw_rows = [];
     let arrays = Object.values(data);
     for (let i = 0; i < height; i++) {
         let row = [];
         for (let elem of arrays) {
             row.push(elem[i]);
         }
-        rows.push(row);
+        raw_rows.push(row);
     }
-    console.log(rows);
-    for (let values of Object.values(rows)) {
+
+    for (let values of Object.values(raw_rows)) {
         let row = table.insertRow();
         for (let grade of values) {
+            console.log(grade)
             if (grade == null) {
                 grade = "";
+            } else if (grade == "TIMEOUT"){
+                grade = "TIMEOUT";
             } else {
                 grade = grade[1];
             }
