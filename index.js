@@ -3,8 +3,7 @@ let websockets = [];
 let intervals = [];
 
 function run_ws() {
-    // const URL = "wss://vulcan-websocket-api.herokuapp.com";
-    const URL = "ws://localhost:8080";
+    const URL = "wss://vulcan-websocket-api.herokuapp.com";
     let endpoints = ["/lukasz/oceny", "/lukasz/pieniadze"];
 
     console.log("Starting websockets in 500ms...");
