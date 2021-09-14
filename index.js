@@ -64,6 +64,7 @@ function filter_date() {
 }
 
 function reset_date() {
+    document.getElementById("filter-date").value = "";
     let data = {event: "RESET_FILTER_DATE"}
     for (let ws of websockets) {
         ws.send(JSON.stringify(data));
