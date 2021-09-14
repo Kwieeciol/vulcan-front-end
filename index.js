@@ -3,26 +3,32 @@ let websockets = [];
 let intervals = [];
 
 function run_ws() {
-    const URL = "wss://vulcan-websocket-api.herokuapp.com";
+    // const URL = "wss://vulcan-websocket-api.herokuapp.com";
+    const URL = "ws://localhost:8080";
     let endpoints = ["/lukasz/oceny", "/lukasz/pieniadze"];
 
-    for (let endpoint of endpoints) {
-        let ws = new WebSocket(`${URL}${endpoint}`);
-        websockets.push(ws);
-    }
+    console.log("Starting websockets in 500ms...");
+    setTimeout(() => {
+        console.log("Starting websockets...");
+        for (let endpoint of endpoints) {
+            let ws = new WebSocket(`${URL}${endpoint}`);
+            websockets.push(ws);
+        }
 
-    for (let ws of websockets) {
-        start_ping(ws);
-    }
+        for (let ws of websockets) {
+            start_ping(ws);
+        }
 
-    for (let ws of websockets) {
-        setup_websocket(ws);
-    }
+        for (let ws of websockets) {
+            setup_websocket(ws);
+        }
+        console.log("Successfully started websockets.");
+    }, 500); // start the websocket connections after half a second of loading the page
 }
 
 function start_ping(ws) {
     let interval = setInterval(() => {
-        ws.send("PING");
+        ws.send(JSON.stringify({event: "PING"}));
     }, PING_TIMEOUT);
     intervals.push(interval);
 }
@@ -30,13 +36,9 @@ function start_ping(ws) {
 function setup_websocket(ws) {
     ws.onmessage = (message) => {
         let raw_data = message.data;
-        if (raw_data == "PONG") {
-            console.log("GOT PONG");
-        } else {
-            let data = JSON.parse(raw_data);
-            console.log(data);
-            process_data(data);
-        }
+        let data = JSON.parse(raw_data);
+        console.log(data);
+        process_data(data);
     }
 
     ws.onerror = (event) => {
@@ -49,15 +51,23 @@ function setup_websocket(ws) {
 function process_data(payload) {
     if (payload.event == "MONEY") {
         build_money_table(payload.data);
-    } else {
+    } else if (payload.event == "GRADES") {
         build_grades_table(payload.data);
     }
 }
 
 function filter_date() {
     let date = document.getElementById("filter-date").value;
+    let data = {event: "FILTER_DATE", data: date}
     for (let ws of websockets) {
-        ws.send(date);
+        ws.send(JSON.stringify(data));
+    }
+}
+
+function reset_date() {
+    let data = {event: "RESET_FILTER_DATE"}
+    for (let ws of websockets) {
+        ws.send(JSON.stringify(data));
     }
 }
 
