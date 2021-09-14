@@ -22,7 +22,7 @@ function run_ws() {
             setup_websocket(ws);
         }
         console.log("Successfully started websockets.");
-    }, 500); // start the websocket connections after half a second of loading the page
+    }, 700); // start the websocket connections after 700ms of loading the page
 }
 
 function start_ping(ws) {
