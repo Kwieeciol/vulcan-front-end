@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+body {
+    font-family: 'Roboto', 'Courier New', Courier, monospace;
+    overflow: hidden;
+}
+
+html {
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: -webkit-linear-gradient( to left top, #4F5D75, #CFD6EA);
+    background: -moz-linear-gradient( to left top, #4F5D75, #CFD6EA);
+    background: -ms-linear-gradient( to left top, #4F5D75, #CFD6EA);
+    background: -o-linear-gradient( to left top, #4F5D75, #CFD6EA);
+    background: linear-gradient( to left top, #4F5D75, #CFD6EA);
+}
+
+h1 {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 55px;
+    text-align: center;
+    margin-top: 40vh;
+    text-shadow: 1px 1px 8px #555;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-container button {
+    height: 40px;
+    width: 150px;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 500;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    text-shadow: 0 0 8px #555;
+}
