@@ -4,9 +4,9 @@ let intervals = [];
 
 function run_ws() {
     const URL = "wss://vulcan-websocket-api.herokuapp.com";
-    let endpoints = ["/lukasz/oceny", "/lukasz/pieniadze"];
+    let endpoints = ["/lukasz/oceny", "/lukasz/pieniadze", "/lukasz/wszystkie-pieniadze"];
 
-    console.log("Starting websockets in 500ms...");
+    console.log("Starting websockets in 700ms...");
     setTimeout(() => {
         console.log("Starting websockets...");
         for (let endpoint of endpoints) {
@@ -52,6 +52,8 @@ function process_data(payload) {
         build_money_table(payload.data);
     } else if (payload.event == "GRADES") {
         build_grades_table(payload.data);
+    } else if (payload.event == "TOTAL_MONEY") {
+        build_total_money(payload.data);
     }
 }
 
@@ -69,6 +71,11 @@ function reset_date() {
     for (let ws of websockets) {
         ws.send(JSON.stringify(data));
     }
+}
+
+function build_total_money(data) {
+    let value = data["total_money"];
+    document.getElementById("total-money-pln").innerHTML = value + " zł";
 }
 
 function build_money_table(data) {

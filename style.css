@@ -57,3 +57,20 @@ body {
 .filter-table-wrapper button {
     font-style: italic;
 }
+
+.total-money-wrapper {
+    font-style: italic;
+    font-size: 23px;
+}
+
+.total-money-wrapper #total-money-text {
+    top: 90%;
+    position: fixed;
+    left: 2.6%;
+}
+
+.total-money-wrapper #total-money-pln {
+    top: 90%;
+    position: fixed;
+    left: 200px;
+}
