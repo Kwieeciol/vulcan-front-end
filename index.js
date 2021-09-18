@@ -2,6 +2,12 @@ const PING_TIMEOUT = 3000; // 3 seconds
 let websockets = [];
 let intervals = [];
 
+window.onbeforeunload = () => {
+    for (let ws of websockets) {
+        ws.send(JSON.stringify({event: "CLOSE"}));
+    }
+}
+
 function run_ws(name) {
     const URL = "wss://vulcan-websocket-api.herokuapp.com";
     let endpoints = [`/${name}/oceny`, `/${name}/pieniadze`, `/${name}/wszystkie-pieniadze`];
