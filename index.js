@@ -23,6 +23,10 @@ function run_ws(name) {
         }
         console.log("Successfully started websockets.");
     }, 700); // start the websocket connections after 700ms of loading the page
+
+    setTimeout(() => {
+        $(".loader-wrapper").fadeOut("slow");
+    }, 2000)
 }
 
 function start_ping(ws) {

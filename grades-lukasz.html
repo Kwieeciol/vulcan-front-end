@@ -8,33 +8,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="run_ws('lukasz')">
-    <h1 id="oceny-imie">Oceny Łukasz</h1>
-
-    <div class="filter-table-wrapper">
-        <label for="filter-date">Filter after: </label>
-        <input type="text" name="filter-date" id="filter-date" placeholder="DD/MM/YYYY" pattern="\d{2}\/\d{2}\/\d{2,4}">
-        <button onclick="filter_date()">filter</button>
-        <button onclick="reset_date()">reset</button>
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
     </div>
 
+    <div class="content">
+        <h1 id="oceny-imie">Oceny Łukasz</h1>
 
-    <div class="table-wrapper">
-        <table id="grades-table" class="tables" border="thin">
-            <thead class="thead-light"></thead>
-            <tbody></tbody>
-        </table>
-    </div>
+        <div class="filter-table-wrapper">
+            <label for="filter-date">Filter after: </label>
+            <input type="text" name="filter-date" id="filter-date" placeholder="DD/MM/YYYY" pattern="\d{2}\/\d{2}\/\d{2,4}">
+            <button onclick="filter_date()">filter</button>
+            <button onclick="reset_date()">reset</button>
+        </div>
 
-    <div class="table-wrapper">
-        <table id="money-table" class="tables" border="thin">
-            <thead class="thead-light"></thead>
-            <tbody></tbody>
-        </table>
-    </div>
 
-    <div class="total-money-wrapper">
-        <p id="total-money-text">Total money: </p>
-        <p id="total-money-pln"></p>
+        <div class="table-wrapper">
+            <table id="grades-table" class="tables" border="thin">
+                <thead class="thead-light"></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="money-table" class="tables" border="thin">
+                <thead class="thead-light"></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="total-money-wrapper">
+            <p id="total-money-text">Total money: </p>
+            <p id="total-money-pln"></p>
+        </div>
     </div>
 </body>
 </html>
