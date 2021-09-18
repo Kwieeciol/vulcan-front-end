@@ -3,7 +3,7 @@
 body {
     font-family: 'Roboto', 'Courier New', Courier, monospace;
     overflow: hidden;
-    background-color: #7C90A0;
+    background-color: #22333B;
 }
 
 .content {
@@ -27,18 +27,18 @@ body {
 }
 
 .tables th {
-    background-color: #E6E6EA;
+    background-color: #ddd;
 }
 
 .tables td {
-    background-color: #fff;
+    background-color: #ccc;
 }
 
 #oceny-imie {
     text-align: center;
     font-style: italic;
     font-weight: 400;
-    color: #000;
+    color: #ccc;
 }
 
 #money-table {
@@ -50,11 +50,11 @@ body {
 }
 
 .filter-table-wrapper {
+    color: #ccc;
     position: fixed;
     top: 5%;
     left: 2.6%;
-    color: #000;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .filter-table-wrapper label {
@@ -73,7 +73,7 @@ body {
 .total-money-wrapper {
     font-style: italic;
     font-size: 23px;
-    color: #000;
+    color: #ccc;
 }
 
 .total-money-wrapper #total-money-text {
