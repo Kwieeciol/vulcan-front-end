@@ -16,7 +16,7 @@ function run_ws(name) {
         ws = new WebSocket(URL);
 
         interval = setInterval(() => {
-            ws.send(JSON.stringify({event: "PING"}));
+            ws.send(JSON.stringify({event: "PING", data: {}}));
         }, PING_TIMEOUT);
 
         ws.onmessage = (message) => {
