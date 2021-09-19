@@ -22,8 +22,7 @@ app.get("/", (req, res) => {
     axios.get(url).then(r => {
         const users = r.data;
         res.render("index", {
-            users: users,
-            api_url: REST_API_URL
+            users: users
         });
     }).catch(err => {
         console.log(err);
