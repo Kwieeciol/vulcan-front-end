@@ -1,58 +1,37 @@
 const PING_TIMEOUT = 3000; // 3 seconds
-let websockets = [];
-let intervals = [];
-let ready_count = 0;
-let endpoints = [];
+let ws = null;
+let interval = null;
 
 window.onbeforeunload = () => {
-    for (let ws of websockets) {
-        ws.send(JSON.stringify({event: "CLOSE"}));
-    }
+    ws.send(JSON.stringify({event: "CLOSE", data: {}}));
 }
 
 function run_ws(name) {
-    const URL = "wss://vulcan-websocket-api.herokuapp.com";
-    endpoints = [`/${name}/oceny`, `/${name}/pieniadze`, `/${name}/wszystkie-pieniadze`];
+    const URL = `wss://vulcan-websocket-api.herokuapp.com/users/${name}`;
 
-    console.log("Starting websockets in 700ms...");
+    console.log("Starting websocket in 700ms...");
     setTimeout(() => {
-        console.log("Starting websockets...");
-        for (let endpoint of endpoints) {
-            let ws = new WebSocket(`${URL}${endpoint}`);
-            websockets.push(ws);
+        console.log("Starting websocket...");
+
+        ws = new WebSocket(URL);
+
+        interval = setInterval(() => {
+            ws.send(JSON.stringify({event: "PING"}));
+        }, PING_TIMEOUT);
+
+        ws.onmessage = (message) => {
+            let raw_data = message.data;
+            let data = JSON.parse(raw_data);
+            console.log(data);
+            process_data(data);
         }
-
-        for (let ws of websockets) {
-            start_ping(ws);
-        }
-
-        for (let ws of websockets) {
-            setup_websocket(ws);
-        }
-        console.log("Successfully started websockets.");
-    }, 700); // start the websocket connections after 700ms of loading the page
-}
-
-function start_ping(ws) {
-    let interval = setInterval(() => {
-        ws.send(JSON.stringify({event: "PING"}));
-    }, PING_TIMEOUT);
-    intervals.push(interval);
-}
-
-function setup_websocket(ws) {
-    ws.onmessage = (message) => {
-        let raw_data = message.data;
-        let data = JSON.parse(raw_data);
-        console.log(data);
-        process_data(data);
-    }
-
-    ws.onerror = (event) => {
-        for (let interval of intervals) {
+    
+        ws.onerror = (event) => {
             clearInterval(interval);
         }
-    }
+
+        console.log("Successfully started websockets.");
+    }, 700); // start the websocket connections after 700ms of loading the page
 }
 
 function process_data(payload) {
@@ -63,29 +42,22 @@ function process_data(payload) {
     } else if (payload.event == "TOTAL_MONEY") {
         build_total_money(payload.data);
     } else if (payload.event == "READY") {
-        endpoint_count++;
-        if (endpoint_count == endpoints.length) {
-            setTimeout(() => {
-                $(".loader-wrapper").fadeOut("slow");
-            }, 500)
-        }
+        setTimeout(() => {
+            $(".loader-wrapper").fadeOut("slow");
+        }, 500)
     }
 }
 
 function filter_date() {
     let date = document.getElementById("filter-date").value;
-    let data = {event: "FILTER_DATE", data: date}
-    for (let ws of websockets) {
-        ws.send(JSON.stringify(data));
-    }
+    let data = {event: "FILTER_DATE", data: {"after": date}};
+    ws.send(JSON.stringify(data));
 }
 
 function reset_date() {
     document.getElementById("filter-date").value = "";
-    let data = {event: "RESET_FILTER_DATE"}
-    for (let ws of websockets) {
-        ws.send(JSON.stringify(data));
-    }
+    let data = {event: "RESET_FILTER_DATE", data: {}}
+    ws.send(JSON.stringify(data));
 }
 
 function build_total_money(data) {
