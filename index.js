@@ -28,9 +28,6 @@ function run_ws(name) {
             setup_websocket(ws);
         }
         console.log("Successfully started websockets.");
-        setTimeout(() => {
-            $(".loader-wrapper").fadeOut("slow");
-        }, 1000)
     }, 700); // start the websocket connections after 700ms of loading the page
 }
 
@@ -63,6 +60,10 @@ function process_data(payload) {
         build_grades_table(payload.data);
     } else if (payload.event == "TOTAL_MONEY") {
         build_total_money(payload.data);
+    } else if (payload.event == "READY") {
+        setTimeout(() => {
+            $(".loader-wrapper").fadeOut("slow");
+        }, 500)
     }
 }
 
