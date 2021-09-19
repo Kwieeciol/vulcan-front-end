@@ -7,7 +7,6 @@ const app = express();
 
 // Variables
 const REST_API_URL = "https://vulcan-websocket-api.herokuapp.com/";
-const WS_URL = "wss://vulcan-websocket-api.herokuapp.com/users";
 const PORT = process.env.PORT || 8080;
 
 // Load view engine
