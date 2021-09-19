@@ -45,10 +45,6 @@ axios.get(REST_API_URL + "users").then(r => {
     console.log(err);
 });
 
-app.get("/test", (req, res) => {
-    res.render("test");
-})
-
 // Start server
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}...`);
