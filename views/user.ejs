@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <% const name = user.replace(/\w/, c => c.toUpperCase()) %>
     <meta charset="UTF-8">
-    <title>Oceny Łukasz</title>
+    <title>Oceny <%= name %></title>
     <script type="text/javascript" src="/static/index.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/static/user.css">
 </head>
-<body onload="run_ws('lukasz')">
+<body onload="run_ws()">
     <div class="loader-wrapper">
         <span class="loader"><span class="loader-inner"></span></span>
     </div>
 
     <div class="content">
-        <h1 id="oceny-imie">Oceny Łukasz</h1>
+        <h1 id="oceny-imie">Oceny <%= name %></h1>
 
         <div class="filter-table-wrapper">
             <label for="filter-date">Filter after: </label>
