@@ -1,6 +1,8 @@
 const PING_TIMEOUT = 3000; // 3 seconds
 let websockets = [];
 let intervals = [];
+let ready_count = 0;
+let endpoints = [];
 
 window.onbeforeunload = () => {
     for (let ws of websockets) {
@@ -10,7 +12,7 @@ window.onbeforeunload = () => {
 
 function run_ws(name) {
     const URL = "wss://vulcan-websocket-api.herokuapp.com";
-    let endpoints = [`/${name}/oceny`, `/${name}/pieniadze`, `/${name}/wszystkie-pieniadze`];
+    endpoints = [`/${name}/oceny`, `/${name}/pieniadze`, `/${name}/wszystkie-pieniadze`];
 
     console.log("Starting websockets in 700ms...");
     setTimeout(() => {
@@ -61,9 +63,12 @@ function process_data(payload) {
     } else if (payload.event == "TOTAL_MONEY") {
         build_total_money(payload.data);
     } else if (payload.event == "READY") {
-        setTimeout(() => {
-            $(".loader-wrapper").fadeOut("slow");
-        }, 500)
+        endpoint_count++;
+        if (endpoint_count == endpoints.length) {
+            setTimeout(() => {
+                $(".loader-wrapper").fadeOut("slow");
+            }, 500)
+        }
     }
 }
 
