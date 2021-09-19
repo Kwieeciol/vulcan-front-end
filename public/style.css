@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+body {
+    font-family: 'Roboto', 'Courier New', Courier, monospace;
+    overflow: hidden;
+    background-color: #22333B;
+}
+
+#oceny-napis {
+    position: absolute;
+    color: #ccc;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 50px;
+    text-align: center;
+    left: 46.6%;
+    top: 34%;
+}
+
+.users-container {    
+    position: absolute;
+    top: 45%;
+    left: 35%;
+    width: 30%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.users-container li {
+    margin-top: 20px;
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+
+    cursor: pointer;    
+}
+.users-container a {
+    text-decoration: none;
+    color: #aaa;
+}
+
+.users-container button {
+    color: #aaa;
+    width: 150px;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}

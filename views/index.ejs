@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oceny</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1 id="oceny-napis">Oceny</h1>
+        <div class="users-container">
+            <ul>
+                <% for (let user of users) { %>
+                    <li>
+                        <button id=<%= user %>>
+                            <a href=<%= "/" + user %>><%= user.replace(/\w/, c => c.toUpperCase()) %></a>
+                        </button>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
