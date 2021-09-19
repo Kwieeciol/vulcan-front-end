@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 8080;
 // Load view engine
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.engine('html', require('ejs').renderFile);
 
 // Load static assets
 app.use("/static", express.static(path.join(__dirname, "public")))
@@ -29,7 +30,6 @@ app.get("/", (req, res) => {
     });
 });
 
-app.engine('html', require('ejs').renderFile);
 
 // Any user route (valid one)
 axios.get(REST_API_URL + "users").then(r => {
