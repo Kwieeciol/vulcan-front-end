@@ -3,7 +3,7 @@
 body {
     font-family: 'Roboto', 'Courier New', Courier, monospace;
     overflow: hidden;
-    background-color: #22333B;
+    background-color: #031927;
 }
 
 .content {
@@ -27,18 +27,18 @@ body {
 }
 
 .tables th {
-    background-color: #ddd;
+    background-color: #F7F0F0;
 }
 
 .tables td {
-    background-color: #ccc;
+    background-color: #D5DFE5;
 }
 
 #oceny-imie {
     text-align: center;
     font-style: italic;
     font-weight: 400;
-    color: #ccc;
+    color: #F7F0F0;
 }
 
 #money-table {
@@ -50,7 +50,7 @@ body {
 }
 
 .filter-table-wrapper {
-    color: #ccc;
+    color: #F7F0F0;
     position: fixed;
     top: 5%;
     left: 2.6%;
@@ -73,7 +73,7 @@ body {
 .total-money-wrapper {
     font-style: italic;
     font-size: 23px;
-    color: #ccc;
+    color: #F7F0F0;
 }
 
 .total-money-wrapper #total-money-text {
@@ -95,7 +95,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #22333B;
+    background-color: #031927;
     display: flex;
     justify-content: center;
     align-items: center;

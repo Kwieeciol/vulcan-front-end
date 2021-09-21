@@ -3,12 +3,12 @@
 body {
     font-family: 'Roboto', 'Courier New', Courier, monospace;
     overflow: hidden;
-    background-color: #22333B;
+    background-color: #031927;
 }
 
 #oceny-napis {
     position: absolute;
-    color: #ccc;
+    color: #F7F0F0;
     font-weight: 400;
     font-style: italic;
     font-size: 50px;
@@ -37,11 +37,11 @@ body {
 }
 .users-container a {
     text-decoration: none;
-    color: #aaa;
+    color: #D5DFE5;
 }
 
 .users-container button {
-    color: #aaa;
+    color: #D5DFE5;
     width: 150px;
     font-size: 20px;
     font-style: italic;
