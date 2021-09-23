@@ -3,7 +3,7 @@
 body {
     font-family: 'Roboto', 'Courier New', Courier, monospace;
     overflow: hidden;
-    background-color: #6D7275;
+    background-color: #9B1D20;
 }
 
 .content {
@@ -95,7 +95,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #6D7275;
+    background-color: #9B1D20;
     display: flex;
     justify-content: center;
     align-items: center;
