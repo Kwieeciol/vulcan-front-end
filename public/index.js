@@ -37,6 +37,12 @@ function run_ws() {
     }, 700); // start the websocket connections after 700ms of loading the page
 }
 
+function on_enter(element) {
+    if (event.key == "Enter") {
+        filter_date();
+    }
+}
+
 function process_data(payload) {
     if (payload.event == "MONEY") {
         build_money_table(payload.data);
