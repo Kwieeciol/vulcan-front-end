@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,20 +9,18 @@
     <link rel="stylesheet" href="/static/style.css">
     <link rel="icon" href="/static/score.png" type="image/icon type">
 </head>
+
 <body>
     <div class="wrapper">
-        <h1 id="oceny-napis">Oceny</h1>
+        <div class="oceny-napis">
+            <h1>Oceny</h1>
+        </div>
         <div class="users-container">
-            <ul>
-                <% for (let user of users) { %>
-                    <li>
-                        <button id=<%= user %>>
-                            <a href=<%= "/" + user %>><%= user.replace(/\w/, c => c.toUpperCase()) %></a>
-                        </button>
-                    </li>
-                <% } %>
-            </ul>
+            <% for (let user of users) { %>
+                <a href=<%="/" + user %>><%= user.replace(/\w/, c=> c.toUpperCase()) %></a>
+            <% } %>
         </div>
     </div>
 </body>
+
 </html>

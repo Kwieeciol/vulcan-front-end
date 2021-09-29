@@ -6,50 +6,45 @@ body {
     background-color: #9B1D20;
 }
 
-#oceny-napis {
-    position: absolute;
+.oceny-napis {
+    width: 600px;
+    position: fixed;
+    top: 34%;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.oceny-napis h1 {
     color: #F7F0F0;
     font-weight: 400;
     font-style: italic;
     font-size: 50px;
-    text-align: center;
-    left: 46.4%;
-    top: 34%;
 }
 
 .users-container {    
-    position: absolute;
+    position: fixed;
     top: 45%;
-    left: 33.9%;
-    width: 30%;
-    align-items: center;
+    left: 50%;
+    width: 600px;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.users-container li {
-    margin-top: 20px;
-    list-style: none;
-    padding-left: 0;
-    text-align: center;
-
-    cursor: pointer;    
-}
 .users-container a {
+    margin-bottom: 15px;
+    margin-top: 15px;
     text-decoration: none;
     color: #D5DFE5;
-}
-
-.users-container button {
-    color: #D5DFE5;
-    width: 150px;
     font-size: 20px;
     font-style: italic;
     font-weight: 500;
-    background-color: Transparent;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline: none;
 }
