@@ -12,10 +12,7 @@ function run_ws() {
     
     const URL = `wss://vulcan-websocket-api.herokuapp.com/users/${name}`;
 
-    console.log("Starting websocket in 700ms...");
     setTimeout(() => {
-        console.log("Starting websocket...");
-
         ws = new WebSocket(URL);
 
         interval = setInterval(() => {
@@ -33,7 +30,6 @@ function run_ws() {
             clearInterval(interval);
         }
 
-        console.log("Successfully started websockets.");
     }, 700); // start the websocket connections after 700ms of loading the page
 }
 
