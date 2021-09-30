@@ -1,4 +1,5 @@
 const PING_TIMEOUT = 3000; // 3 seconds
+const date_pattern = /\d{2}\/\d{2}\/\d{2,4}/;
 let ws = null;
 let interval = null;
 
@@ -55,11 +56,17 @@ function process_data(payload) {
 
 function filter_date() {
     let date = document.getElementById("filter-date").value;
-    let data = {event: "FILTER_DATE", data: {"after": date}};
-    ws.send(JSON.stringify(data));
+    if (date.match(date_pattern)) {
+        let data = {event: "FILTER_DATE", data: {"after": date}};
+        ws.send(JSON.stringify(data));
+        // change placeholder text
+        $("#filter-date").attr("placeholder", date);
+        document.getElementById("filter-date").value = "";
+    }
 }
 
 function reset_date() {
+    $("#filter-date").attr("placeholder", "DD/MM/YYYY");
     document.getElementById("filter-date").value = "";
     let data = {event: "RESET_FILTER_DATE", data: {}}
     ws.send(JSON.stringify(data));
@@ -67,7 +74,7 @@ function reset_date() {
 
 function build_total_money(data) {
     let value = data["total_money"];
-    document.getElementById("total-money-pln").innerHTML = value + " zł";
+    $("#total-money-pln").html(value + " zł");
 }
 
 function build_money_table(data) {
