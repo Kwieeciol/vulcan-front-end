@@ -9,7 +9,7 @@ body {
 .oceny-napis {
     width: 600px;
     position: fixed;
-    top: 34%;
+    top: 325px;
     justify-content: center;
     align-items: center;
     margin: auto;
@@ -27,7 +27,7 @@ body {
 
 .users-container {    
     position: fixed;
-    top: 45%;
+    top: 430px;
     left: 50%;
     width: 600px;
     transform: translateX(-50%);
