@@ -113,6 +113,8 @@ function build_money_table(data) {
         for (let grade of values) {
             if (grade == null) {
                 grade = "";
+            } else {
+                grade = grade + " zł";
             }
 
             let cell = row.insertCell();
