@@ -17,14 +17,24 @@ app.engine('html', require('ejs').renderFile);
 // Load static assets
 app.use("/static", express.static(path.join(__dirname, "public")))
 
+// Helper function
+function is_on_phone(req) {
+    return req.headers["user-agent"].match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i);
+}
+
 // Home route
 app.get("/", (req, res) => {
+    let is_phone = is_on_phone(req);
     let url = REST_API_URL + "users";
     axios.get(url).then(r => {
         const users = r.data;
-        res.render("index", {
-            users: users
-        });
+        let page = "";
+        if (is_phone) {
+            page = "index_phone.html";
+        } else {
+            page = "index.html";
+        }
+        res.render(page, {users: users});
     }).catch(err => {
         console.log(err);
     });
@@ -36,7 +46,14 @@ axios.get(REST_API_URL + "users").then(r => {
     const users = r.data;
     for (let user of users) {
         app.get(`/${user}`, (req, res) => {
-            res.render("user", {user: user});
+            let is_phone = is_on_phone(req);
+            let page = "";
+            if (is_phone) {
+                page = "user_phone";
+            } else {
+                page = "user";
+            }
+            res.render(page, {user: user});
         });
     }
 }).catch(err => {

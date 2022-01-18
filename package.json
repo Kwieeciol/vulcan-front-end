@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "Łukasz Kwieciński",
   "license": "MIT",
@@ -12,6 +13,7 @@
     "axios": "^0.21.4",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "nodemon": "^2.0.15",
     "pug": "^3.0.2"
   }
 }
