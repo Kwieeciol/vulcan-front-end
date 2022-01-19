@@ -4,9 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Oceny</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+        body {
+            font-family: 'Roboto', 'Courier New', Courier, monospace;
+            overflow: hidden;
+            background-color: #9B1D20;
+        }
+
+        .oceny-napis {
+            margin-top: 50px;
+        }
+
+        .oceny-napis h1 {
+            color: #F7F0F0;
+            font-weight: 400;
+            font-style: italic;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .users-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .users-container a {
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: #D5DFE5;
+            font-size: 20px;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 85vh;
+        }
+</style>
 </head>
 <body>
-    
+    <div class="wrapper">
+        <div class="oceny-napis">
+            <h1>Oceny</h1>
+        </div>
+
+        <div class="users-container">
+            <% for (let user of users) { %>
+                <a href=<%="/" + user %>><%= user.replace(/\w/, c=> c.toUpperCase()) %></a>
+            <% } %>
+        </div>
+    </div>
 </body>
 </html>
