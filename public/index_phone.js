@@ -1,4 +1,5 @@
 const PING_TIMEOUT = 3000; // 3 seconds
+const date_pattern = /\d{2}\/\d{2}\/\d{2,4}/;
 let ws = null;
 let interval = null;
 
@@ -33,6 +34,10 @@ function process_data(data) {
         build_table(data.event, data.data);
     } else if (data.event == "TOTAL_MONEY") {
         build_total_money(data.data);
+    } else if (data.event == "READY") {
+        setTimeout(() => {
+            $(".loader-wrapper").fadeOut("slow");
+        }, 500)
     }
 }
 
@@ -67,4 +72,28 @@ function build_table(event, data) {
         // add the row to the table
         table.appendChild(row);
     });
+}
+
+function on_enter(element) {
+    if (event.key == "Enter") {
+        filter_date();
+    }
+}
+
+function filter_date() {
+    let date = document.getElementById("filter-date").value;
+    if (date.match(date_pattern)) {
+        let data = {event: "FILTER_DATE", data: {"after": date}};
+        ws.send(JSON.stringify(data));
+        // change placeholder text
+        $("#filter-date").attr("placeholder", date);
+        document.getElementById("filter-date").value = "";
+    }
+}
+
+function reset_date() {
+    $("#filter-date").attr("placeholder", "DD/MM/YYYY");
+    document.getElementById("filter-date").value = "";
+    let data = {event: "RESET_FILTER_DATE", data: {}}
+    ws.send(JSON.stringify(data));
 }

@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+body {
+    font-family: 'Roboto', 'Courier New', Courier, monospace;
+    overflow: hidden;
+    background-color: #0D3B66;
+}
+
+#oceny-imie {
+    font-weight: 400;
+    font-style: italic;
+    color: #F7F0F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-buttons label {
+    color: #F7F0F0;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.filter-buttons input {
+    font-style: italic;
+    height: 18px;
+    border-radius: 5px;
+}
+
+.filter-buttons button {
+    border-radius: 5px;
+    height: 25px;
+}
+
+.tables {
+    border: 1px solid #F7F0F0;
+    table-layout: fixed;
+    width: 95vw;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.tables, .tables td {
+    font-style: italic;
+    font-weight: 400;
+    background-color: #fff;
+}
+
+#grades-table {
+    margin-top: 20px;
+}
+
+#wszystkie-pieniadze {
+    font-weight: 400;
+    font-style: italic;
+    color: #F7F0F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-wrapper {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #0D3B66;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 4px solid #Fff;
+    animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(180deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-inner {
+    0% {
+        height: 0%;
+    }
+
+    25% {
+        height: 0%;
+    }
+
+    50% {
+        height: 100%;
+    }
+
+    75% {
+        height: 100%;
+    }
+
+    100% {
+        height: 0%;
+    }
+}
