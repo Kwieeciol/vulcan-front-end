@@ -30,9 +30,9 @@ app.get("/", (req, res) => {
         const users = r.data;
         let page = "";
         if (is_phone) {
-            page = "index_phone.html";
+            page = "index_phone.ejs";
         } else {
-            page = "index.html";
+            page = "index.ejs";
         }
         res.render(page, {users: users});
     }).catch(err => {
