@@ -8,10 +8,11 @@ window.onbeforeunload = () => {
 }
 
 function run_ws() {
+    let base_url = document.getElementById("data").dataset.url;
     let url = window.location.href.split("/");
     let name = url[url.length - 1];
     
-    const URL = `wss://vulcan-websocket-api.herokuapp.com/users/${name}`;
+    const URL = `${base_url}${name}`;
 
     setTimeout(() => {
         ws = new WebSocket(URL);

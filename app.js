@@ -6,7 +6,8 @@ const axios = require("axios");
 const app = express();
 
 // Variables
-const REST_API_URL = "https://vulcan-websocket-api.herokuapp.com/";
+const REST_API_URL = process.argv.includes("--localhost") ? "http://localhost:8080/" : "https://vulcan-websocket-api.herokuapp.com/";
+const WS_URL = process.argv.includes("--localhost") ? "ws://localhost:8080/users/" : "wss://vulcan-websocket-api.herokuapp.com/users/";
 const PORT = process.env.PORT || 3000;
 
 // Load view engine
@@ -53,7 +54,7 @@ axios.get(REST_API_URL + "users").then(r => {
             } else {
                 page = "user";
             }
-            res.render(page, {user: user});
+            res.render(page, {user: user, url: WS_URL});
         });
     }
 }).catch(err => {
@@ -62,5 +63,6 @@ axios.get(REST_API_URL + "users").then(r => {
 
 // Start server
 app.listen(PORT, () => {
+    console.log(REST_API_URL);
     console.log(`Server started on port ${PORT}...`);
 });
