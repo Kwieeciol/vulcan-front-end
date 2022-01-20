@@ -61,6 +61,10 @@ axios.get(REST_API_URL + "users").then(r => {
     console.log(err);
 });
 
+app.get("*", (req, res) => {
+   res.render("not_found.ejs");
+});
+
 // Start server
 app.listen(PORT, () => {
     console.log(REST_API_URL);
