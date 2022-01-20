@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const axios = require("axios");
+const { restart } = require("nodemon");
 
 // Init app
 const app = express();
@@ -41,10 +42,11 @@ app.get("/", (req, res) => {
     });
 });
 
+let users;
 
 // Any user route (valid one)
 axios.get(REST_API_URL + "users").then(r => {
-    const users = r.data;
+    users = r.data;
     for (let user of users) {
         app.get(`/${user}`, (req, res) => {
             let is_phone = is_on_phone(req);
@@ -61,9 +63,15 @@ axios.get(REST_API_URL + "users").then(r => {
     console.log(err);
 });
 
-app.get("*", (req, res) => {
-   res.render("not_found.ejs");
-});
+app.all("*", (req, res, next) => {
+    let endpoint = req.path.slice(1);
+    if (!users.includes(endpoint)) {
+        res.status(404).render("not_found.ejs");
+    } else {
+        next();
+    }
+    // res.status(404).send('foo')
+})
 
 // Start server
 app.listen(PORT, () => {
